@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<string>FakeDomain</string>
+		<string>400</string>
+		<string>500</string>
+		<string>This is what you get..</string>
+	</array>
+	<array>
+		<string>FakeDomain</string>
+		<integer>200</integer>
+		<integer>399</integer>
+		<string>This is a test, this is only a test...</string>
+	</array>
+	<array>
+		<string>TestDomain</string>
+		<integer>0</integer>
+		<integer>50</integer>
+		<string>My mother said: if you can&apos;t say anything nice...</string>
+	</array>
+</array>
+</plist>
