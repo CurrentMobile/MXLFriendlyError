@@ -12,12 +12,12 @@
 		<array>
 			<integer>403</integer>
 			<integer>403</integer>
-			<string>The service refused our request.</string>
+			<string>The sever refused our request.</string>
 		</array>
 		<array>
 			<integer>404</integer>
 			<integer>404</integer>
-			<string>The data you requested is not available from the service. It may have been removed.</string>
+			<string>The data you requested is not available. It may have been removed.</string>
 		</array>
 		<array>
 			<integer>405</integer>
@@ -27,7 +27,7 @@
 		<array>
 			<integer>408</integer>
 			<integer>408</integer>
-			<string>Our service request failed because it took us too long to receive the data. You may want to try again later.</string>
+			<string>Our request failed because we are having trouble connecting. You may want to try again later.</string>
 		</array>
 		<array>
 			<integer>409</integer>
@@ -42,12 +42,12 @@
 		<array>
 			<integer>503</integer>
 			<integer>503</integer>
-			<string>Our request failed because the service is unavailable at this time. You may want to try again later.</string>
+			<string>The server is not available right now. You may want to try again later.</string>
 		</array>
 		<array>
 			<integer>504</integer>
 			<integer>504</integer>
-			<string>Our request failed because the service ran out of time to satisfy it.</string>
+			<string>The server took too long to respond. You may want to try again later.</string>
 		</array>
 		<array>
 			<integer>505</integer>
