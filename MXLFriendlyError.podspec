@@ -23,9 +23,8 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'Category'
-  s.resource_bundles = {
-    'MXLFriendlyError' => ['Resource/*.plist']
-  }
+  s.resource = 'Resource/error.plist'
+  
   s.library = 'c++'
   s.xcconfig = {
        'CLANG_CXX_LANGUAGE_STANDARD' => 'c++11',
