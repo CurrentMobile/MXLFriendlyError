@@ -43,6 +43,10 @@ static std::map<errorCodeRange, NSString *> _testMap;
 
 @implementation NSError (MXLFriendlyError)
 
++ (void)initialize {
+    [self loadFriendlyErrorDescriptions];
+}
+
 + (void)loadFriendlyErrorDescriptions {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"error" ofType:@"plist"];
     NSDictionary *descriptions  = [[NSDictionary alloc] initWithContentsOfFile:path];

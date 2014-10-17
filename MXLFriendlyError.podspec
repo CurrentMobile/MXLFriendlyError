@@ -9,14 +9,14 @@
 
 Pod::Spec.new do |s|
   s.name             = "MXLFriendlyError"
-  s.version          = "0.1.3"
+  s.version          = "0.1.4"
   s.summary          = "A library to replace nasty HTTP errors with friendly ones."
   s.description          = "This library provides a category on NSError that supplies localized custom error descriptions for HTTP status codes."
   s.homepage         = "https://github.com/mobilexlabs/MXLFriendlyError"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "John Welch" => "john@mobilexlabs.com" }
-  s.source           = { :git => "https://github.com/mobilexlabs/MXLFriendlyError.git", :tag => "0.1.3" }
+  s.source           = { :git => "https://github.com/mobilexlabs/MXLFriendlyError.git", :tag => "0.1.4" }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '7.0'
