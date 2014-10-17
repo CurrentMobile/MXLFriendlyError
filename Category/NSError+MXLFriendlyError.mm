@@ -1,5 +1,6 @@
 //
 //  NSError+MXLFriendlyError.m
+//  FriendlyError
 //
 //  Created by John Welch on 10/16/14.
 //  Copyright (c) 2014 MobileX Labs. All rights reserved.
@@ -12,7 +13,6 @@
 #include <map>
 #include <string>
 
-// A quick and dirty range object.. Look up a range class in the C++ docs.
 class errorCodeRange {
 public:
     NSInteger min;
@@ -45,29 +45,42 @@ static std::map<errorCodeRange, NSString *> _testMap;
 
 + (void)loadFriendlyErrorDescriptions {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"error" ofType:@"plist"];
-    NSArray *descriptions  = [[NSArray alloc] initWithContentsOfFile:path];
+    NSDictionary *descriptions  = [[NSDictionary alloc] initWithContentsOfFile:path];
     
     // The format for the error plist is an array of arrays containing (domain,startcode,endcode,description).
     // Parse that into something efficient to search.
-    for (NSArray *d in descriptions) {
-        NSString *domain = d[0];
-        errorCodeRange range = errorCodeRange([d[1] integerValue],[d[2] integerValue]);
-        NSString *description = d[3];
+    for (NSString *key in descriptions) {
         
-        _friendlyErrorDescription[std::string([domain UTF8String])][range] = description;
+        std::string locale = std::string([key UTF8String]);
         
+        NSArray *errors = descriptions[key];
+        
+        for (NSArray *error in errors) {
+            errorCodeRange range = errorCodeRange([error[0] integerValue],[error[1] integerValue]);
+            NSString *description = error[2];
+            
+            _friendlyErrorDescription[locale][range] = description;
+        }
     }
 }
 
-- (NSString *)friendlyLocalizedDescription {
-
-    NSString *description = _friendlyErrorDescription[std::string([self.domain UTF8String])][errorCodeRange(self.code)];
++ (NSString *)friendlyLocalizedDescriptionHTTPStatus:(NSInteger)statusCode {
+    
+    NSString *locale = [NSLocale currentLocale].localeIdentifier;
+    
+    NSString *description = _friendlyErrorDescription[std::string([locale UTF8String])][errorCodeRange(statusCode)];
     
     if (description == nil) {
-        description = [self localizedDescription];
+        description = _friendlyErrorDescription[std::string("en_US")][errorCodeRange(statusCode)];
     }
     
     return description;
+}
+
+// Implement this later. For now, pass the localized description.
+- (NSString *)friendlyLocalizedDescription {
+    
+    return [self localizedDescription];
 }
 
 

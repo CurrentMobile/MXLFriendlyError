@@ -1,24 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<array>
+<dict>
+	<key>en_US</key>
 	<array>
-		<string>FakeDomain</string>
-		<string>400</string>
-		<string>500</string>
-		<string>This is what you get..</string>
+		<array>
+			<integer>400</integer>
+			<string>400</string>
+			<string>Our service request failed due to a mistake on our part. Sorry about that.</string>
+		</array>
+		<array>
+			<integer>403</integer>
+			<integer>403</integer>
+			<string>The service refused our request.</string>
+		</array>
+		<array>
+			<integer>404</integer>
+			<integer>404</integer>
+			<string>The data you requested is not available from the service. It may have been removed.</string>
+		</array>
+		<array>
+			<integer>405</integer>
+			<integer>407</integer>
+			<string>Our service request failed due to a mistake on our part. Sorry about that.</string>
+		</array>
+		<array>
+			<integer>408</integer>
+			<integer>408</integer>
+			<string>Our service request failed because it took us too long to receive the data. You may want to try again later.</string>
+		</array>
+		<array>
+			<integer>409</integer>
+			<integer>499</integer>
+			<string>Our service request failed due to a mistake on our part. Sorry about that.</string>
+		</array>
+		<array>
+			<integer>500</integer>
+			<integer>502</integer>
+			<string>Our service request failed due to a server error. Sorry about that.</string>
+		</array>
+		<array>
+			<integer>503</integer>
+			<integer>503</integer>
+			<string>Our request failed because the service is unavailable at this time. You may want to try again later.</string>
+		</array>
+		<array>
+			<integer>504</integer>
+			<integer>504</integer>
+			<string>Our request failed because the service ran out of time to satisfy it.</string>
+		</array>
+		<array>
+			<integer>505</integer>
+			<integer>599</integer>
+			<string>Our service request failed due to a server error. Sorry about that.</string>
+		</array>
 	</array>
-	<array>
-		<string>FakeDomain</string>
-		<integer>200</integer>
-		<integer>399</integer>
-		<string>This is a test, this is only a test...</string>
-	</array>
-	<array>
-		<string>TestDomain</string>
-		<integer>0</integer>
-		<integer>50</integer>
-		<string>My mother said: if you can&apos;t say anything nice...</string>
-	</array>
-</array>
+</dict>
 </plist>
