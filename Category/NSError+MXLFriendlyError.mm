@@ -13,6 +13,8 @@
 #include <map>
 #include <string>
 
+const NSString *MXLFriendlyErrorDomain = @"MXLFriendlyErrorsDomain";
+
 class errorCodeRange {
 public:
     NSInteger min;
@@ -79,6 +81,19 @@ static std::map<errorCodeRange, NSString *> _testMap;
     }
     
     return description;
+}
+
++ (NSError *)errorWithStatus:(NSInteger)statusCode andDomain:(NSString *)domain andDefaultDescription:(NSString *)description {
+    NSString *friendlyDescription = [NSError friendlyLocalizedDescriptionHTTPStatus:statusCode];
+    NSDictionary *info = nil;
+    
+    if (friendlyDescription != nil) {
+        info = @{NSLocalizedDescriptionKey: friendlyDescription};
+    } else {
+        info = @{NSLocalizedDescriptionKey: description};
+    }
+    
+    return [NSError errorWithDomain:domain code:statusCode userInfo:info];
 }
 
 // Implement this later. For now, pass the localized description.
