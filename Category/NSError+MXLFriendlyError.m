@@ -50,7 +50,9 @@ static NSDictionary *_friendlyErrorDescription;
 
 + (NSString *)friendlyLocalizedDescriptionHTTPStatus:(NSInteger)statusCode {
     
-    NSString *locale = [NSLocale currentLocale].localeIdentifier;
+    NSLocale *locale = [NSLocale currentLocale];
+
+    NSString *localeID = locale.localeIdentifier;
     
     /*
     NSString *description = _friendlyErrorDescription[std::string([locale UTF8String])][errorCodeRange(statusCode)];
@@ -62,7 +64,7 @@ static NSDictionary *_friendlyErrorDescription;
     
     NSString *description = nil;
     
-    NSArray *errorRanges = _friendlyErrorDescription[locale];
+    NSArray *errorRanges = _friendlyErrorDescription[localeID];
     
     if (errorRanges == nil) {
         errorRanges = _friendlyErrorDescription[@"en_US"];
