@@ -9,14 +9,14 @@
 
 Pod::Spec.new do |s|
   s.name             = "MXLFriendlyError"
-  s.version          = "0.1.5"
+  s.version          = "0.1.6"
   s.summary          = "A library to replace nasty HTTP errors with friendly ones."
   s.description          = "This library provides a category on NSError that supplies localized custom error descriptions for HTTP status codes."
   s.homepage         = "https://github.com/mobilexlabs/MXLFriendlyError"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "John Welch" => "john@mobilexlabs.com" }
-  s.source           = { :git => "https://github.com/mobilexlabs/MXLFriendlyError.git", :tag => "0.1.5" }
+  s.source           = { :git => "https://github.com/mobilexlabs/MXLFriendlyError.git", :tag => "0.1.6" }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '7.0'
@@ -24,12 +24,6 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Category'
   s.resource = 'Resource/error.plist'
-  
-  s.library = 'c++'
-  s.xcconfig = {
-       'CLANG_CXX_LANGUAGE_STANDARD' => 'c++11',
-       'CLANG_CXX_LIBRARY' => 'libc++'
-  }
 
   # s.public_header_files = 'Category/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

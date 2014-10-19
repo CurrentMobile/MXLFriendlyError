@@ -8,10 +8,8 @@
 
 #import "NSError+MXLFriendlyError.h"
 
-#import <objc/runtime.h>
-
-#include <map>
-#include <string>
+//#include <map>
+//#include <string>
 
 const NSString *MXLFriendlyErrorDomain = @"MXLFriendlyErrorsDomain";
 
@@ -39,9 +37,9 @@ public:
     }
 };
 
-static std::map<std::string, std::map<errorCodeRange, NSString *> > _friendlyErrorDescription;
+//static std::map<std::string, std::map<errorCodeRange, NSString *> > _friendlyErrorDescription;
 
-static std::map<errorCodeRange, NSString *> _testMap;
+static NSDictionary *_friendlyErrorDescription;
 
 @implementation NSError (MXLFriendlyError)
 
@@ -53,8 +51,11 @@ static std::map<errorCodeRange, NSString *> _testMap;
     NSString *path = [[NSBundle mainBundle] pathForResource:@"error" ofType:@"plist"];
     NSDictionary *descriptions  = [[NSDictionary alloc] initWithContentsOfFile:path];
     
+    _friendlyErrorDescription = descriptions;
+    
     // The format for the error plist is an array of arrays containing (domain,startcode,endcode,description).
     // Parse that into something efficient to search.
+    /*
     for (NSString *key in descriptions) {
         
         std::string locale = std::string([key UTF8String]);
@@ -68,16 +69,40 @@ static std::map<errorCodeRange, NSString *> _testMap;
             _friendlyErrorDescription[locale][range] = description;
         }
     }
+    */
 }
 
 + (NSString *)friendlyLocalizedDescriptionHTTPStatus:(NSInteger)statusCode {
     
     NSString *locale = [NSLocale currentLocale].localeIdentifier;
     
+    /*
     NSString *description = _friendlyErrorDescription[std::string([locale UTF8String])][errorCodeRange(statusCode)];
     
     if (description == nil) {
         description = _friendlyErrorDescription[std::string("en_US")][errorCodeRange(statusCode)];
+    }
+    */
+    
+    NSString *description = nil;
+    
+    NSArray *errorRanges = _friendlyErrorDescription[locale];
+    
+    if (errorRanges == nil) {
+        errorRanges = _friendlyErrorDescription[@"en_US"];
+    }
+    
+    NSInteger index = 0;
+    NSInteger count = [errorRanges count];
+    
+    while (index < count && description == nil) {
+        NSArray *item = errorRanges[index];
+        
+        if ([item[0] integerValue] <= statusCode && [item[1] integerValue] >= statusCode) {
+            description = item[2];
+        }
+        
+        index += 1;
     }
     
     return description;
