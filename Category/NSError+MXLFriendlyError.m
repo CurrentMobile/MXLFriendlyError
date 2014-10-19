@@ -13,30 +13,6 @@
 
 const NSString *MXLFriendlyErrorDomain = @"MXLFriendlyErrorsDomain";
 
-class errorCodeRange {
-public:
-    NSInteger min;
-    NSInteger max;
-    
-    errorCodeRange(NSInteger min, NSInteger max)
-    {
-        this->min = min;
-        this->max = max;
-    };
-    
-    errorCodeRange(NSInteger val)
-    {
-        this->min = val;
-        this->max = val;
-    };
-    
-    const bool operator < ( const errorCodeRange &rhs ) const
-    {
-        // rhs range is greater
-        return rhs.min > max;
-    }
-};
-
 //static std::map<std::string, std::map<errorCodeRange, NSString *> > _friendlyErrorDescription;
 
 static NSDictionary *_friendlyErrorDescription;
